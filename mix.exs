@@ -69,7 +69,8 @@ defmodule Challenge.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
-      {:excoveralls, "~> 0.13.4", only: :test}
+      {:excoveralls, "~> 0.13.4", only: :test},
+      {:sobelow, "~> 0.8", only: :dev}
     ]
   end
 
