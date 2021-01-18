@@ -1,11 +1,28 @@
 defmodule Challenge.MixProject do
   use Mix.Project
 
+  @github_url "https://github.com/gissandrogama/challenge_elixir"
+
   def project do
     [
       app: :challenge,
       version: "0.1.0",
       elixir: "~> 1.11",
+      description: "Projeto API de blog para o teste tecnico da trybe",
+      source_url: @github_url,
+      homepage_url: @github_url,
+      files: ~w(mix.exs lib LICENSE.md README.md CHANGELOG.md),
+      package: [
+        maintainers: ["Gissandro Gama"],
+        licenses: ["MIT"],
+        links: %{
+          "Github" => @github_url
+        }
+      ],
+      docs: [
+        main: "readme",
+        extras: ["Readme.md", "CHANGELOG.md"]
+      ],
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
