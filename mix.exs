@@ -8,7 +8,7 @@ defmodule Challenge.MixProject do
       app: :challenge,
       version: "0.1.0",
       elixir: "~> 1.11",
-      description: "Projeto API de blog para o teste tecnico da trybe",
+      description: "Stone's technical deficit for the Elixir Training Program",
       source_url: @github_url,
       homepage_url: @github_url,
       files: ~w(mix.exs lib LICENSE.md README.md CHANGELOG.md),
