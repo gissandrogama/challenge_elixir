@@ -1,5 +1,9 @@
 # Challenge
 
+[![Build Status](https://www.travis-ci.com/gissandrogama/challenge_elixir.svg?branch=main)](https://www.travis-ci.com/gissandrogama/challenge_elixir)
+
+[![codecov](https://codecov.io/gh/gissandrogama/challenge_elixir/branch/main/graph/badge.svg?token=K9FV5Z2E26)](https://codecov.io/gh/gissandrogama/challenge_elixir)
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
