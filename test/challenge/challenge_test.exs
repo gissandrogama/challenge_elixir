@@ -57,5 +57,54 @@ defmodule ChallengeTest do
 
       assert result == [%{email: "teste1@gmail.com", value: 564.96}]
     end
+
+    test "many items for many people" do
+      itens = [
+        %{name: "contra file", amount: 3, price: 5000, type: "kg"},
+        %{name: "leite liquido", amount: 4, price: 399, type: "litro"},
+        %{name: "arroz", amount: 4, price: 598, type: "kg"},
+        %{name: "feijão", amount: 4, price: 799, type: "kg"},
+        %{name: "queijo mussarela", amount: 4, price: 4289, type: "kg"},
+        %{name: "queijo mussarela", amount: 4, price: 4289, type: "kg"},
+        %{name: "contra file", amount: 3, price: 5000, type: "kg"},
+        %{name: "leite liquido", amount: 4, price: 399, type: "litro"},
+        %{name: "arroz", amount: 4, price: 598, type: "kg"},
+        %{name: "feijão", amount: 4, price: 799, type: "kg"},
+        %{name: "queijo mussarela", amount: 4, price: 4289, type: "kg"},
+        %{name: "queijo mussarela", amount: 4, price: 4289, type: "kg"},
+        %{name: "contra file", amount: 3, price: 5000, type: "kg"},
+        %{name: "leite liquido", amount: 4, price: 399, type: "litro"},
+        %{name: "arroz", amount: 4, price: 598, type: "kg"},
+        %{name: "feijão", amount: 4, price: 799, type: "kg"},
+        %{name: "queijo mussarela", amount: 4, price: 4289, type: "kg"},
+        %{name: "queijo mussarela", amount: 4, price: 4289, type: "kg"}
+      ]
+
+      emails = [
+        "teste1@gmail.com",
+        "teste2@gmail.com",
+        "teste3@gmail.com",
+        "teste4@gmail.com",
+        "teste5@gmail.com",
+        "teste6@gmail.com",
+        "teste7@gmail.com",
+        "teste8@gmail.com",
+        "teste9@gmail.com"
+      ]
+
+      result = Handle.calculate(itens, emails)
+
+      assert result == [
+               %{email: "teste1@gmail.com", value: 188.32},
+               %{email: "teste2@gmail.com", value: 188.32},
+               %{email: "teste3@gmail.com", value: 188.32},
+               %{email: "teste4@gmail.com", value: 188.32},
+               %{email: "teste5@gmail.com", value: 188.32},
+               %{email: "teste6@gmail.com", value: 188.32},
+               %{email: "teste7@gmail.com", value: 188.32},
+               %{email: "teste8@gmail.com", value: 188.32},
+               %{email: "teste9@gmail.com", value: 188.32}
+             ]
+    end
   end
 end
