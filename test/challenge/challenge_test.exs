@@ -1,5 +1,6 @@
 defmodule ChallengeTest do
   use ExUnit.Case
+  doctest Handle
 
   describe "calculate/2" do
     test "return empty list" do
@@ -34,10 +35,10 @@ defmodule ChallengeTest do
       result = Handle.calculate(itens, emails)
 
       assert result == [
-               {"teste1@gmail.com", 9835.0},
-               {"teste2@gmail.com", 9835.0},
-               {"teste3@gmail.com", 9835.0},
-               {"teste4@gmail.com", 9835.0}
+               {"teste1@gmail.com", 98.35},
+               {"teste2@gmail.com", 98.35},
+               {"teste3@gmail.com", 98.35},
+               {"teste4@gmail.com", 98.35}
              ]
     end
   end
