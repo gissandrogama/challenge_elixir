@@ -2,30 +2,25 @@ defmodule Handle do
   @moduledoc """
   handle module
   """
-  @buy [
-    %{name: "contra file", amount: 3, price: 5000, type: "kg"},
-    %{name: "leite liquido", amount: 4, price: 399, type: "litro"},
-    %{name: "arroz", amount: 4, price: 598, type: "kg"},
-    %{name: "feijão", amount: 4, price: 799, type: "kg"},
-    %{name: "queijo mussarela", amount: 4, price: 4289, type: "kg"}
-  ]
-  @email ["teste1@gmail.com", "teste2@gmail.com", "teste3@gmail.com"]
-  def caculate do
-    amount = @buy |> Enum.map(fn item -> item.amount * item.price end) |> Enum.sum()
-    people = @email |> Enum.count()
 
-    split(amount, people)
+  def calculate([], []), do: []
+  @spec calculate(List.t(), List.t()) :: [Tuple]
+  def calculate(itens, emails) do
+    amount = itens |> Enum.map(fn item -> item.amount * item.price end) |> Enum.sum()
+    people = emails |> Enum.count()
+
+    split(amount, people, emails)
   end
 
-  def split(value, quantity) do
+  def split(value, quantity, emails) do
     cloven = value / quantity
 
-    list = Enum.map(@email, &{&1, process(cloven)})
+    list = Enum.map(emails, &{&1, process(cloven)})
 
     key = Enum.count(list) - 1
 
     list
-    |> List.update_at(key, fn {email, value} -> {email, value + 0.01} end)
+    |> List.update_at(key, fn {email, value} -> {email, Float.ceil(value, 2) } end)
   end
 
   def process(cloven) when is_float(cloven) do
@@ -38,8 +33,15 @@ defmodule Handle do
 
     cond do
       digits > 2 ->
+        cloven = cloven / 100
+
         cloven
         |> Float.round(2)
+
+      true ->
+        cloven = cloven / 100
+
+        cloven
     end
   end
 end
