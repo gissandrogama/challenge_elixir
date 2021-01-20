@@ -11,7 +11,7 @@ defmodule Challenge.MixProject do
       description: "Stone's technical deficit for the Elixir Training Program",
       source_url: @github_url,
       homepage_url: @github_url,
-      files: ~w(mix.exs lib LICENSE.md README.md CHANGELOG.md),
+      files: ~w(mix.exs lib LICENSE.MD README.md CHANGELOG.MD),
       package: [
         maintainers: ["Gissandro Gama"],
         licenses: ["MIT"],
@@ -21,7 +21,7 @@ defmodule Challenge.MixProject do
       ],
       docs: [
         main: "readme",
-        extras: ["Readme.md", "CHANGELOG.md"]
+        extras: ["README.md", "CHANGELOG.MD"]
       ],
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
@@ -71,7 +71,9 @@ defmodule Challenge.MixProject do
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.13.4", only: :test},
       {:sobelow, "~> 0.8", only: :dev},
-      {:mix_test_watch, "~> 1.0", only: :dev, runtime: false}
+      {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.23", only: :dev, runtime: false},
+      {:earmark, "~> 1.3", only: [:dev]}
     ]
   end
 
