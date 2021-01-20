@@ -35,12 +35,22 @@ defmodule Handle do
   def split(value, quantity, emails) do
     cloven = value / quantity
 
-    list = Enum.map(emails, &{&1, process(cloven)})
+    value = process(cloven)
 
-    key = Enum.count(list) - 1
+    case value do
+      {:float, cloven} ->
+        list = Enum.map(emails, fn email -> %{email: email, value: cloven} end)
 
-    list
-    |> List.update_at(key, fn {email, value} -> {email, Float.ceil(value, 2)} end)
+        key = Enum.count(list) - 1
+
+        list
+        |> List.update_at(key, fn pessoas ->
+          %{email: pessoas.email, value: pessoas.value + 0.01}
+        end)
+
+      {:interge, cloven} ->
+        Enum.map(emails, fn email -> %{email: email, value: cloven} end)
+    end
   end
 
   def process(cloven) when is_float(cloven) do
@@ -51,17 +61,18 @@ defmodule Handle do
       |> List.last()
       |> String.length()
 
-    cond do
-      digits > 2 ->
-        cloven = cloven / 100
+    if digits > 2 do
+      cloven = cloven / 100
 
+      cloven =
         cloven
         |> Float.round(2)
 
-      true ->
-        cloven = cloven / 100
+      {:float, cloven}
+    else
+      cloven = cloven / 100
 
-        cloven
+      {:interge, cloven}
     end
   end
 end
